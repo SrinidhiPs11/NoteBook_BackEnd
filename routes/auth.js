@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
 
-const JWT_SECRET = "this is the most secure server";
+;
 
 
 //create user endpoint 
@@ -44,7 +44,7 @@ router.post('/createuser', [
             }
         }
         signedup = true;
-        const token = jwt.sign(data, JWT_SECRET)
+        const token = jwt.sign(data, process.env.JWT_SECRET)
         res.json({ token, signedup})
     } catch (error) {
         console.error(error.message);
@@ -83,7 +83,7 @@ router.post('/login', [
                 id: user.id
             }
         }
-        const token = jwt.sign(data, JWT_SECRET)
+        const token = jwt.sign(data, process.env.JWT_SECRET)
         login = true;
         res.json({ token,login })
 
