@@ -134,7 +134,7 @@ router.post('/forgotpassword', async (req, res) => {
             from: process.env.EMAIL_FROM,
             to: email,
             subject: 'Reset your password',
-            text: `click on this link to rest your password - http://localhost:3000/reset-password/${user._id}/${token}`
+            text: `click on this link to rest your password - https://notebook-tcxm.onrender.com/reset-password/${user._id}/${token}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
